@@ -45,7 +45,6 @@ public class Master : MonoBehaviour {
         } else 
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 }

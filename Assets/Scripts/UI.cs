@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UI : MonoBehaviour
@@ -11,7 +12,9 @@ public class UI : MonoBehaviour
     public TMP_Text cellCountText;
     public TMP_Text foodCountText;
     public TMP_Text foodSpawnRateText;
+    public Slider foodSpawnRateSlider;
     public TMP_Text mutationFrequencyText;
+    public Slider mutationFrequencySlider;
 
     [Header("Cell Information UI")]
     public GameObject cellInformationUI;
@@ -30,6 +33,10 @@ public class UI : MonoBehaviour
         // Set Current View
         Master.Instance.globalView = true;
         Master.Instance.cellView = false;
+
+        // Information
+        foodSpawnRateSlider.value = Master.Instance.foodSpawnRate;
+        mutationFrequencySlider.value = Master.Instance.mutationFrequency;
     }
 
     void Update() 
@@ -53,6 +60,10 @@ public class UI : MonoBehaviour
         {
             cellInformationUI.SetActive(false);
         }
+        
+        // Update Information
+        Master.Instance.foodSpawnRate = foodSpawnRateSlider.value;
+        Master.Instance.mutationFrequency = mutationFrequencySlider.value;
     }
 
     void SetWorldInformation() 
@@ -61,8 +72,8 @@ public class UI : MonoBehaviour
         worldSizeText.text = "World Size: " + Master.Instance.worldSize.ToString();
         cellCountText.text = "Cell Count: " + Master.Instance.cellCount.ToString();
         foodCountText.text = "Food Count: " + Master.Instance.foodCount.ToString();
-        foodSpawnRateText.text = "Food Spawn Rate: " + (Master.Instance.foodSpawnRate).ToString() + "s";
-        mutationFrequencyText.text = "Mutation Frequency: " + (Master.Instance.mutationFrequency * 100f).ToString() + "%";
+        foodSpawnRateText.text = "Food Spawn Rate: " + (Master.Instance.foodSpawnRate).ToString("F2") + "s";
+        mutationFrequencyText.text = "Mutation Frequency: " + (Master.Instance.mutationFrequency * 100f).ToString("F2") + "%";
     }
 
     void SetCellInformation() 
