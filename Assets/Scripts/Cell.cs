@@ -23,7 +23,6 @@ public class Cell : MonoBehaviour {
     public string color = "#FF0000";
     public float decisionFrequency = 1f;
     public float energyCapacity = 1f;
-    public float foodGain = 0.5f;
     public float moveSpeed = 100f;
     public float maxSpeed = 5f;
     public float viewDistance = 5f;
@@ -231,7 +230,7 @@ public class Cell : MonoBehaviour {
             nearbyFood.Add(col.transform);
             if (Vector3.Distance(col.gameObject.transform.position, transform.position) <= 1f) 
             {
-                energy += foodGain;
+                energy += Master.Instance.foodGain;
                 Destroy(col.gameObject);
                 Master.Instance.foodCount--;
             }

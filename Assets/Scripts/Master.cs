@@ -27,6 +27,7 @@ public class Master : MonoBehaviour {
     [Header("World Information")]
     public int cellCount = 0;
     public int foodCount = 0;
+    public float foodGain = 0.5f;
     public float foodSpawnRate = 0.5f;
     public float mutationFrequency = 0.01f;
 
