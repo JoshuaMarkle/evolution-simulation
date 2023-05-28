@@ -144,8 +144,8 @@ MonoBehaviour:
   rb: {fileID: 2828507458533892}
   viewDistanceScript: {fileID: 2828507851698882}
   viewDistanceCollider: {fileID: 2828507851698880}
-  genome: 0000 0000 0000 0000 0000 0000
-  color: FFFFFF
+  genome: 1111 1100 1010 1001 1110 0011
+  color: '#FFFFFF'
   decisionFrequency: 0
   energyCapacity: 1
   foodGain: 0.05
