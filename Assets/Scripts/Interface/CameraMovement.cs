@@ -2,19 +2,15 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour 
 {
-    private UI uiScript;
-
     // Changable Vars
     [Header("Custom")]
     public float movementSpeed = 1f;
+    public float scrollSpeed = 10.0f;
 
+    // Common References
     private Vector2 centerScreen;
     private Camera mainCamera;
     private GameObject objectToFollow;
-
-    public float scrollSpeed = 10.0f;
-    public float minOrthographicSize = 10f;
-    public float maxOrthographicSize;
 
     // Animation Helpers
     public AnimationCurve animationCurve;
@@ -24,9 +20,12 @@ public class CameraMovement : MonoBehaviour
     private float endOrthoSize;
     private float time;
 
+    // Other
+    private float minOrthographicSize = 10f;
+    private float maxOrthographicSize;
+
     private void Start()
     {
-        uiScript = Master.Instance.uiScript;
         objectToFollow = null;
 
         centerScreen = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -42,7 +41,7 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         // Camera Speed
-        movementSpeed = mainCamera.orthographicSize / 50000f;
+        movementSpeed = mainCamera.orthographicSize / 30000f;
 
         if (time < 1f) {
             // Smooth Orthographic Transition
@@ -92,7 +91,7 @@ public class CameraMovement : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
                 if (hit.collider != null && hit.collider.CompareTag("PlayerArea")) {
                     objectToFollow = hit.collider.gameObject.transform.parent.gameObject;
-                    uiScript.tempCellScript = objectToFollow.GetComponent<Cell>();
+                    Master.Instance.uiScript.tempCellScript = objectToFollow.GetComponent<Cell>();
                     startTransform = transform.position;
                     endTransform = new Vector3(objectToFollow.transform.position.x, objectToFollow.transform.position.y, -10f);
                     startOrthoSize = mainCamera.orthographicSize;

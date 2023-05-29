@@ -9,6 +9,7 @@ public class UI : MonoBehaviour
     // World Information
     [Header("World Information")]
     public GameObject worldInformationUI;
+    public Animator worldInformationAnim;
     public TMP_Text worldSizeText;
     public TMP_Text cellCountText;
     public TMP_Text foodCountText;
@@ -22,9 +23,10 @@ public class UI : MonoBehaviour
     [Header("Buttons")]
     public TMP_Text toggleSimulationText;
 
-    // World Information
+    // Cell Information
     [Header("Cell Information")]
     public GameObject cellInformationUI;
+    //public Animator cellInformationAnim;
     public TMP_Text genomeText;
     public TMP_Text colorText;
     public TMP_Text moveSpeedText;
@@ -33,7 +35,13 @@ public class UI : MonoBehaviour
     public TMP_Text wanderDeviationText;
     public TMP_Text energyText;
 
+    // Helpers
     [HideInInspector] public Cell tempCellScript;
+    // public bool isAnimating = false;
+    // private bool animCooldown = false;
+    // public bool worldOpen = false;
+    // private float time;
+    // private bool cellOpen = true;
 
     void Start() 
     {
@@ -45,21 +53,29 @@ public class UI : MonoBehaviour
         foodSpawnRateSlider.value = Master.Instance.foodSpawnRate;
         mutationFrequencySlider.value = Master.Instance.mutationFrequency;
         timeScaleSlider.value = Master.Instance.timeScale;
+
+        // // Animations
+        // isAnimating = false;
+        // animCooldown = false;
+        // worldOpen = false;
+        // time = 0f;
     }
 
     void Update() 
     {
-        // Global Focus Screen
+        // Show World Info?
         if (Master.Instance.globalView) 
         {
             worldInformationUI.SetActive(true);
             SetWorldInformation();
+            // OpenWorldInfo();
         } else 
         {
             worldInformationUI.SetActive(false);
+            // CloseWorldInfo();
         }
 
-        // Cell Focus Screen
+        // Show Cell Info?
         if (Master.Instance.cellView) 
         {
             cellInformationUI.SetActive(true);
@@ -73,6 +89,9 @@ public class UI : MonoBehaviour
         Master.Instance.foodSpawnRate = foodSpawnRateSlider.value;
         Master.Instance.mutationFrequency = mutationFrequencySlider.value;
         Master.Instance.timeScale = timeScaleSlider.value;
+
+        // // Animation
+        // AnimationCooldown();
     }
 
     void SetWorldInformation() 
@@ -90,8 +109,9 @@ public class UI : MonoBehaviour
 
     void SetCellInformation() 
     {
+        // Cell Information
         genomeText.text = tempCellScript.genome;
-        colorText.text = "Color: " + tempCellScript.color;
+        colorText.text = "Color: #" + tempCellScript.color;
         moveSpeedText.text = "Move Speed: " + tempCellScript.moveSpeed.ToString();
         maxSpeedText.text = "Max Speed: " + tempCellScript.maxSpeed.ToString();
         viewDistanceText.text = "View Distance: " + tempCellScript.viewDistance.ToString();
@@ -128,4 +148,44 @@ public class UI : MonoBehaviour
         Master.Instance.mapMasterScript.KillEntities();
         toggleSimulationText.text = "Start Simulation";
     }
+
+    // // UI ANIMATION (Only Plays One Frame???)
+
+    // public void OpenWorldInfo()
+    // {
+    //     if (!isAnimating && !worldOpen)
+    //     {
+    //         Debug.Log("Open World Info Called");
+    //         worldOpen = true;
+    //         isAnimating = true;
+    //         worldInformationAnim.Play("Open");
+    //         animCooldown = true;
+    //     }
+    // }
+    
+    // public void CloseWorldInfo()
+    // {
+    //     if (!isAnimating && worldOpen)
+    //     {
+    //         Debug.Log("Close World Info Called");
+    //         worldOpen = false;
+    //         isAnimating = true;
+    //         worldInformationAnim.Play("Close");
+    //         animCooldown = true;
+    //     }
+    // }
+
+    // void AnimationCooldown()
+    // {
+    //     if (animCooldown)
+    //     {
+    //         time += Time.unscaledDeltaTime;
+    //         if (time > 1f)
+    //         {
+    //             time = 0f;
+    //             isAnimating = false;
+    //             animCooldown = false;
+    //         }
+    //     }
+    // }
 }
