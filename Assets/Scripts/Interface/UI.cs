@@ -16,6 +16,8 @@ public class UI : MonoBehaviour
     [Header("World State")]
     public TMP_Text timeScaleText;
     public Slider timeScaleSlider;
+    public TMP_Text energyCostText;
+    public Slider energyCostSlider;
     public TMP_Text foodSpawnRateText;
     public Slider foodSpawnRateSlider;
     public TMP_Text mutationFrequencyText;
@@ -27,6 +29,7 @@ public class UI : MonoBehaviour
     [Header("Cell Information")]
     public GameObject cellInformationUI;
     //public Animator cellInformationAnim;
+    public TMP_Text generationText;
     public TMP_Text genomeText;
     public TMP_Text colorText;
     public TMP_Text moveSpeedText;
@@ -50,9 +53,10 @@ public class UI : MonoBehaviour
         Master.Instance.cellView = false;
 
         // Information
+        timeScaleSlider.value = Master.Instance.timeScale;
+        energyCostSlider.value = Master.Instance.energyDialator;
         foodSpawnRateSlider.value = Master.Instance.foodSpawnRate;
         mutationFrequencySlider.value = Master.Instance.mutationFrequency;
-        timeScaleSlider.value = Master.Instance.timeScale;
 
         // // Animations
         // isAnimating = false;
@@ -86,9 +90,10 @@ public class UI : MonoBehaviour
         }
         
         // Update Information
+        Master.Instance.timeScale = timeScaleSlider.value;
+        Master.Instance.energyDialator = energyCostSlider.value;
         Master.Instance.foodSpawnRate = foodSpawnRateSlider.value;
         Master.Instance.mutationFrequency = mutationFrequencySlider.value;
-        Master.Instance.timeScale = timeScaleSlider.value;
 
         // // Animation
         // AnimationCooldown();
@@ -102,21 +107,22 @@ public class UI : MonoBehaviour
         foodCountText.text = "Food Count: " + Master.Instance.foodCount.ToString();
 
         // World State
-        timeScaleText.text = "Time Scale: " + (Master.Instance.timeScale * 100f).ToString("F2") + "%";
+        timeScaleText.text = "Time Scale: " + (Master.Instance.timeScale * 100f).ToString("F0") + "%";
+        energyCostText.text = "Energy Cost: " + (Master.Instance.energyDialator * 100f).ToString("F0") + "%";
         foodSpawnRateText.text = "Food Spawn Rate: " + (Master.Instance.foodSpawnRate).ToString("F2") + "s";
-        mutationFrequencyText.text = "Mutation Frequency: " + (Master.Instance.mutationFrequency * 100f).ToString("F2") + "%";
+        mutationFrequencyText.text = "Mutation Frequency: " + (Master.Instance.mutationFrequency * 100f).ToString("F0") + "%";
     }
 
     void SetCellInformation() 
     {
         // Cell Information
+        generationText.text = "Generation: " + tempCellScript.generation;
         genomeText.text = tempCellScript.genome;
         colorText.text = "Color: #" + tempCellScript.color;
-        moveSpeedText.text = "Move Speed: " + tempCellScript.moveSpeed.ToString();
-        maxSpeedText.text = "Max Speed: " + tempCellScript.maxSpeed.ToString();
-        viewDistanceText.text = "View Distance: " + tempCellScript.viewDistance.ToString();
-        wanderDeviationText.text = "Wander Deviation: " + tempCellScript.wanderDeviation.ToString() + "°";
-        energyText.text = "Energy: " + (tempCellScript.energy * 100f).ToString("F2") + "%";
+        moveSpeedText.text = "Move Speed: " + tempCellScript.moveSpeed.ToString("F0");
+        viewDistanceText.text = "View Distance: " + tempCellScript.viewDistance.ToString("F0");
+        wanderDeviationText.text = "Wander Deviation: " + tempCellScript.wanderDeviation.ToString("F0") + "°";
+        energyText.text = "Energy: " + (tempCellScript.energy * 100f).ToString("F0") + "%";
     }
 
     public void ToggleSimulation() {

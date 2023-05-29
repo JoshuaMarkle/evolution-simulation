@@ -144,14 +144,14 @@ MonoBehaviour:
   rb: {fileID: 2828507458533892}
   viewDistanceScript: {fileID: 2828507851698882}
   viewDistanceCollider: {fileID: 2828507851698880}
-  genome: 1111 1100 1010 1001 1110 0011
+  genome: 
+  generation: 1
   color: '#FFFFFF'
   decisionFrequency: 0.0001
   energyCapacity: 1
-  moveSpeed: 8
-  maxSpeed: 8
-  viewDistance: 10
-  wanderDeviation: 45
+  moveSpeed: 1
+  viewDistance: 1
+  wanderDeviation: 1
   tempFood: {x: 0, y: 0}
 --- !u!1 &2828507837493042
 GameObject:
