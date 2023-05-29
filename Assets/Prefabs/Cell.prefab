@@ -146,9 +146,8 @@ MonoBehaviour:
   viewDistanceCollider: {fileID: 2828507851698880}
   genome: 1111 1100 1010 1001 1110 0011
   color: '#FFFFFF'
-  decisionFrequency: 0
+  decisionFrequency: 0.0001
   energyCapacity: 1
-  foodGain: 0.05
   moveSpeed: 8
   maxSpeed: 8
   viewDistance: 10

@@ -8,7 +8,7 @@ public class Master : MonoBehaviour {
 
     // Scripts
     [Header("Scripts")]
-    public GenerateMap generateMapScript;
+    public MapMaster mapMasterScript;
     public UI uiScript;
 
     // GameObjects
@@ -23,8 +23,11 @@ public class Master : MonoBehaviour {
     public int startingCells = 10;
     public int startingFood = 20;
 
-    // World Information
-    [Header("World Information")]
+    // World State
+    [Header("World State")]
+    public bool runningSimulation = false;
+    public bool resetTrue = true;
+    public float timeScale = 1f;
     public int cellCount = 0;
     public int foodCount = 0;
     public float foodGain = 0.5f;
@@ -45,6 +48,24 @@ public class Master : MonoBehaviour {
         } else 
         {
             Instance = this;
+        }
+    }
+
+    void Start()
+    {
+        runningSimulation = false;
+        resetTrue = true;
+    }
+
+    void Update()
+    {
+        // Update Game Time
+        if (runningSimulation)
+        {
+            Time.timeScale = timeScale;
+        } else
+        {
+            Time.timeScale = 0f;
         }
     }
 }

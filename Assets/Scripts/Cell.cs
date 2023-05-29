@@ -56,21 +56,24 @@ public class Cell : MonoBehaviour {
     }
 
     void Update() {
-        time += Time.deltaTime / decisionFrequency;
-        if (time > 1f) {
-            time = 0f;
-            SetState();
-            Move();
-            FindNearestFood();
-        }
-
-        //TODO: Scale According To Energy
-        // gameObject.transform.localScale = (Vector3) Vector2.one * (energy + 0.5f);
-
-        // Debug (Draw Line To Target Food)
-        if (tempFood != Vector2.zero) 
+        if (Master.Instance.runningSimulation)
         {
-            Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + (Vector3) moveDirection, Color.red);
+            time += Time.deltaTime / decisionFrequency;
+            if (time > 1f) {
+                time = 0f;
+                SetState();
+                Move();
+                FindNearestFood();
+            }
+
+            //TODO: Scale According To Energy
+            // gameObject.transform.localScale = (Vector3) Vector2.one * (energy + 0.5f);
+
+            // Debug (Draw Line To Target Food)
+            if (tempFood != Vector2.zero) 
+            {
+                Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + (Vector3) moveDirection, Color.red);
+            }
         }
     }
 
