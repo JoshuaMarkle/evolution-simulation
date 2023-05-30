@@ -74,3 +74,6 @@ crashlytics-build.properties
 # MLAgent Information
 /venv/
 /results/
+
+# TMP Pro Stuff
+/Assets/TextMeshPro/
