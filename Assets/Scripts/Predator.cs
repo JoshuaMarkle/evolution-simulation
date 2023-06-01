@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cell : Creature 
+public class Predator : Creature 
 {
     protected override void Awake()
     {
         base.Awake();
-        foodType = "Food";
+        foodType = "Player";
     }
 }
