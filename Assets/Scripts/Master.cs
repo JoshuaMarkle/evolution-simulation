@@ -31,7 +31,7 @@ public class Master : MonoBehaviour {
     public int cellCount = 0;
     public int foodCount = 0;
     public float energyDialator = 1f;
-    public float foodGain = 0.5f;
+    public float foodGain = 0.5f; //TODO: ADD UI TO THIS
     public float foodSpawnRate = 0.5f;
     public float mutationFrequency = 0.01f;
 
@@ -39,6 +39,9 @@ public class Master : MonoBehaviour {
     [Header("UI State")]
     public bool globalView;
     public bool cellView;
+
+    // Hidden
+    public float decisionFrequency;
 
     void Awake()
     {

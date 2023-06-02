@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2828507458533891}
   - component: {fileID: 2828507458534008}
   m_Layer: 0
-  m_Name: Cell
-  m_TagString: Player
+  m_Name: Predator
+  m_TagString: Predator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30930984df8feab49b0e807e1207ebdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodType: Food
+  foodType: Player
   energy: 0
   rb: {fileID: 2828507458533892}
   viewDistanceScript: {fileID: 2828507851698882}
