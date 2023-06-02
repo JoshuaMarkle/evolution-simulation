@@ -80,7 +80,7 @@ public class Creature : MonoBehaviour
         }
     }
 
-    // Limit Velocity To moveSpeed
+    // Limit Velocity
     void FixedUpdate() 
     {
         if(rb.velocity.magnitude > moveSpeed) 
