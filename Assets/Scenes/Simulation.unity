@@ -2178,7 +2178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapMasterScript: {fileID: 128400352}
   uiScript: {fileID: 1449471042}
-  cellPrefab: {fileID: 2828507458534009, guid: d39a98b5dbd65624f881169c390fe1c3, type: 3}
+  cellPrefab: {fileID: 2828507458534009, guid: 6cfd3d23b48aa3d4bab2fc3b28978c98, type: 3}
   foodPrefab: {fileID: 1644118849056337407, guid: e55a9d2467f9f7045b5d30e00c8a6a65, type: 3}
   wallPrefab: {fileID: 4353760177710296991, guid: 084619389809fdd409056e5f20cf790b, type: 3}
   worldSize: 100
@@ -2195,6 +2195,7 @@ MonoBehaviour:
   mutationFrequency: 0.5
   globalView: 0
   cellView: 0
+  decisionFrequency: 0
 --- !u!4 &839980536
 Transform:
   m_ObjectHideFlags: 0
